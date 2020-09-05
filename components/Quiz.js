@@ -5,6 +5,7 @@ import { red, green, gray } from '../utils/colors'
 import { connect } from "react-redux";
 import { removeDeck } from '../actions/index';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import { setLocalNotification, clearLocalNotification } from '../utils/helper';
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
@@ -54,6 +55,9 @@ class Quiz extends Component {
         switchV: true,
         flipButtonText: 'Show Answer'
 
+    }
+    componentDidMount() {
+        clearLocalNotification().then(setLocalNotification);
     }
 
     markQuestion(isCorrect) {

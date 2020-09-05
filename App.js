@@ -15,6 +15,7 @@ import logger from 'redux-logger';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { gray, red, blue, green } from './utils/colors'
+import { setLocalNotification } from './utils/helper';
 
 //const cDeck = () => <Text>Create Deck</Text>;
 const CreateDeckStack = () => {
@@ -72,6 +73,9 @@ const BottomTabs = () => {
 const Stack = createStackNavigator();
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
 
   render() {
     const theme = {
